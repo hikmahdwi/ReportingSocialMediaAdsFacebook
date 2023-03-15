@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- Mirrored from www.themeon.net/nifty/v2.9.1/tables-datatable.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 05 Jan 2019 22:48:41 GMT -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Campaign Performance</title>
+
+    <!--STYLESHEET-->
+    <!--=================================================-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+    <link href="static/nifass/css/bootstrap.min.css" rel="stylesheet">
+    <link href="static/nifass/css/nifty.min.css" rel="stylesheet">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> 
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
+    <link href="static/nifass/css/demo/nifty-demo-icons.min.css" rel="stylesheet">
+    <link href="static/nifass/plugins/pace/pace.min.css" rel="stylesheet">
+    <script src="static/nifass/plugins/pace/pace.min.js"></script>
+    <link href="static/nifass/css/demo/nifty-demo.min.css" rel="stylesheet">
+    <link href="static/nifass/plugins/bootstrap-tagsinput/bootstrap-tagsinput.min.css" rel="stylesheet">
+    <link href="static/nifass/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="static/nifass/plugins/css-loaders/css/css-loaders.css" rel="stylesheet">
+    <link href="static/nifass/plugins/fooTable/css/footable.core.css" rel="stylesheet">
+
+</head>
+
+<!--TIPS-->
+<!--You may remove all ID or Class names which contain "demo-", they are only used for demonstration. -->
+<body>
+    <div id="container" class="effect aside-float aside-bright mainnav-lg">
+        
+        {% include "navbar.html" %}
+        <div class="boxed">
+            <div id="content-container">
+                <!-- ================== Panel 1 ==================== -->
+                <div id="page-content">
+                    <div class="panel">
+					    <div class="panel-body">
+                            <div class="panel-heading">
+                                <h5 style="margin-bottom: 0px;">Ongoing Campaign</h5>
+                            </div>
+                            <h6><span style="color: red;">*</span> If the text is red, the performance of the ads is not good</h6>
+                            <table id="ads-insights" class="table table-bordered table-hover toggle-circle" data-page-size="7">
+					            <thead>
+					                <tr>
+					                    <th data-toggle="true">Ad Name</th>
+					                    <th>Objective</th>
+                                        <th>Result</th>
+                                        <th>Cost per Result</th>
+                                        <th>CTR</th>
+                                        <th data-hide="phone, tablet">CPC</th>
+					                    <th data-hide="phone, tablet">Conversion Rate Ranking</th>
+                                        <th data-hide="phone, tablet">Engagement Rate Ranking</th>
+                                        <th data-hide="phone, tablet">Quality Ranking</th>
+					                    <th data-hide="phone, tablet">Status</th>
+					                </tr>
+					            </thead>
+					            <div class="pad-btm form-inline">
+					                <div class="row">
+					                    <div class="col-sm-6 text-xs-center">
+					                        <div class="form-group">
+					                            <label class="control-label">Status</label>
+					                            <select id="ads-filter-status" class="form-control">
+					                                <option value="">Show all</option>
+					                                <option value="active">Active</option>
+					                                <option value="paused">Paused</option>
+                                                    <option value="pending_review">Pending Review</option>
+					                                <option value="campaign_paused">Campaign Paused</option>
+                                                    <option value="in_process">In Process</option>
+                                                    <option value="deleted">Deleted</option>
+                                                    <option value="archived">Archived</option>
+                                                    <option value="adset_paused">Adset Paused</option>
+                                                    <option value="with_issues">With Issues</option>
+                                                    <option value="disapproved">Disapproved</option>
+                                                    <option value="preapproved">Preapproved</option>
+                                                    <option value="pending_billing_info">Pending Billing Info</option>
+					                            </select>
+					                        </div>
+					                    </div>
+					                    <div class="col-sm-6 text-xs-center text-right">
+					                        <div class="form-group">
+					                            <input id="ads-search" type="text" placeholder="Search" class="form-control" autocomplete="off">
+					                        </div>
+					                    </div>
+					                </div>
+					            </div>
+					            <tbody>
+					            </tbody>
+					            <tfoot>
+					                <tr>
+					                    <td colspan="5">
+					                        <div class="text-right">
+					                            <ul class="pagination"></ul>
+					                        </div>
+					                    </td>
+					                </tr>
+					            </tfoot>
+					        </table>
+                            <div id="loader-cmpg" class="load7">
+                                <div class="loader"></div>
+                            </div>
+                        </div>
+					</div>
+            </div>
+            <!--===================================================-->
+            <!--END CONTENT CONTAINER-->
+                        
+            {% include "main-nav.html" %} 
+
+            <!--Default Bootstrap Modal-->
+            <!--===================================================-->
+            <div class="modal fade" id="demo-tips" role="dialog" tabindex="-1" aria-labelledby="demo-default-modal" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+
+                        <!--Modal header-->
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal"><i class="pci-cross pci-circle"></i></button>
+                            <h4 class="modal-title">Manage Data Tips</h4>
+                        </div>
+
+                        <!--Modal body-->
+                        <div class="modal-body">
+                            <ul>
+                                <li>Hal pertama yang harus anda lakukan adalah selalu meng-update data, baik itu data ads ataupun campaign. Hal ini dilakukan agar tabel penyimpanan anda tidak kosong(saat pertama kali bergabung) dan juga menghindari terjadinya kesalahan pada saat pengolahan data.</li>
+                                <li>Saat melakukan update data, isikan parameter tanggal dengan tanggal kemarin. hal ini dilakukan agar semua data ads pada hari itu dapat di kumpulkan.</li>
+                                <li>Untuk Menampilkan data table(display table) pastikan jika anda sudah mengupdate data ads atau campaign. Hal ini dilakukan agar data yang ditampilkan pada table akan kosong.</li>
+                            </ul>
+                        </div>
+
+                        <!--Modal footer-->
+                        <div class="modal-footer">
+                            <button data-dismiss="modal" class="btn btn-primary" type="button">GOT IT</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--===================================================-->
+            <!--End Default Bootstrap Modal-->
+
+        </div>
+
+        <!-- FOOTER -->
+        <!--===================================================-->
+        <footer id="footer">
+
+            <!-- Visible when footer positions are fixed -->
+            <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+            <div class="show-fixed pad-rgt pull-right">
+                You have <a href="#" class="text-main"><span class="badge badge-danger">3</span> pending action.</a>
+            </div>
+
+            <!-- Visible when footer positions are static -->
+            <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+            <div class="hide-fixed pull-right pad-rgt">
+                14GB of <strong>512GB</strong> Free.
+            </div>
+
+            <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+            <!-- Remove the class "show-fixed" and "hide-fixed" to make the content always appears. -->
+            <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+            <p class="pad-lft">&#0169; 2021 Aptana Citra Solusindo</p>
+
+        </footer>
+        <!--===================================================-->
+        <!-- END FOOTER -->
+
+        <!-- SCROLL PAGE BUTTON -->
+        <!--===================================================-->
+        <button class="scroll-top btn">
+            <i class="pci-chevron chevron-up"></i>
+        </button>
+        <!--===================================================-->
+    </div>
+    <!--===================================================-->
+    <!-- END OF CONTAINER -->
+
+    <!--JAVASCRIPT-->
+    <!--=================================================-->
+ 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="../static/nifass/js/bootstrap.min.js"></script>
+    <script src="../static/nifass/js/nifty.min.js"></script>
+    <script src="../static/nifass/js/demo/nifty-demo.min.js"></script>
+    <script src="../static/nifass/js/demo/nifty-demo.min.js"></script>
+    <!-- <script src="static/nifass/plugins/masked-input/jquery.maskedinput.min.js"></script>
+    <script src="static/nifass/js/demo/ui-modals.js"></script> -->
+    <script src="../static/nifass/plugins/fooTable/dist/footable.all.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
+    <script src="../static/nifass/js/fb/cmpg-performances.js"></script>
+</html>

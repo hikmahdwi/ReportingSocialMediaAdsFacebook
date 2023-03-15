@@ -1,0 +1,86 @@
+<nav id="mainnav-container">
+    <div id="mainnav">
+        <div id="mainnav-menu-wrap">
+            <div class="nano">
+                <div class="nano-content">
+                    <div id="mainnav-profile" class="mainnav-profile">
+                        <div class="profile-wrap text-center">
+                            <div class="pad-btm" id="profil_user">
+                                <img class="img-circle img-md" id="profil_demo" src="../static/nifass/img/profile-photos/1.png" alt="Profile Picture">
+                            </div>
+                            <a href="#profile-nav" class="box-block" data-toggle="collapse" aria-expanded="false">
+                                <!-- <span class="pull-right dropdown-toggle">
+                                    <i class="dropdown-caret"></i>
+                                </span> -->
+                                <p id="nama_user" class="mnp-name">Sosmed Aptana</p>
+                            </a>
+                        </div>
+                        <!-- <div id="profile-nav" class="collapse list-group bg-trans">
+                            <a id="logout_b" href="#" class="list-group-item">
+                                <i class="demo-pli-unlock icon-lg icon-fw"></i> Logout
+                            </a>
+                        </div> -->
+                    </div>
+
+                    <ul id="mainnav-menu" class="list-group">
+            
+                        <!--Category name-->
+                        <li class="list-header">Navigation</li>
+                        <!--Menu list item-->
+                        <!-- <li>
+                            <a href="#">
+                                <i class="demo-pli-home"></i>
+                                <span class="menu-title active">Manage Data</span>
+                            </a>
+                        </li> -->
+                        <!--Menu list item-->
+                        <!-- <li>
+                            <a href="#">
+                                <i class="demo-pli-bar-chart"></i>
+                                <span class="menu-title">Data Visualization</span>
+                            </a>
+                        </li> -->
+                        <!--Menu list item-->
+                        <!-- <li>
+                            <a href="#">
+                                <i class="demo-pli-gear"></i>
+                                <span class="menu-title">Data Predicting</span>
+                            </a>
+                        </li> -->
+                        <li>
+                            <a href="#" aria-expanded="false" data-original-title="" title="">
+                                <i class="demo-pli-home"></i>
+                                <span class="menu-title">Monitoring</span>
+                                <i class="arrow"></i>
+                            </a>
+                            <!--Submenu-->
+                            <ul class="collapse" aria-expanded="false">
+                                <li><a href="{{ url_for('campaignInsights') }}">Campaign Insights</a></li>
+                                <li><a href="{{ url_for('adsInsights') }}">Ads Insights</a></li>
+                                <li><a href="{{ url_for('cmpgPerformance') }}">Ads Performance</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="{{ url_for('fanpage') }}">
+                                <i class="demo-pli-thunder"></i>
+                                <span class="menu-title">Fanpage List</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="demo-pli-pen-5"></i>
+                                <span class="menu-title">Audience Estimated</span>
+                            </a>
+                        </li>
+                        <!-- <li>
+                            <a href="#">
+                                <i class="demo-pli-bar-chart"></i>
+                                <span class="menu-title">Manage Merchant Data</span>
+                            </a>
+                        </li> -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>

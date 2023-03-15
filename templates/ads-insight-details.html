@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- Mirrored from www.themeon.net/nifty/v2.9.1/tables-datatable.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 05 Jan 2019 22:48:41 GMT -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Ad Insight Details</title>
+
+    <!--STYLESHEET-->
+    <!--=================================================-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+    <link href="static/nifass/css/bootstrap.min.css" rel="stylesheet">
+    <link href="static/nifass/css/nifty.min.css" rel="stylesheet">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> 
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
+    <link href="static/nifass/css/demo/nifty-demo-icons.min.css" rel="stylesheet">
+    <link href="static/nifass/plugins/pace/pace.min.css" rel="stylesheet">
+    <script src="static/nifass/plugins/pace/pace.min.js"></script>
+    <link href="static/nifass/css/demo/nifty-demo.min.css" rel="stylesheet">
+    <link href="static/nifass/plugins/bootstrap-tagsinput/bootstrap-tagsinput.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/css/bootstrap-select.min.css" />
+    <link href="static/nifass/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../static/nifass/plugins/chosen/chosen.min.css" rel="stylesheet">
+    <link href="../static/nifass/plugins/select2/css/select2.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    <link href="static/nifass/plugins/fooTable/css/footable.core.css" rel="stylesheet">
+    <!-- <link href="plugins/datatables/media/css/dataTables.bootstrap.css" rel="stylesheet"> -->
+	<!-- <link href="plugins/datatables/extensions/Responsive/css/responsive.dataTables.min.css" rel="stylesheet"> -->
+
+</head>
+
+<!--TIPS-->
+<!--You may remove all ID or Class names which contain "demo-", they are only used for demonstration. -->
+<body>
+    <div id="container" class="effect aside-float aside-bright mainnav-lg">
+        
+        {% include "navbar.html" %}
+        <div class="boxed">
+            <div id="content-container">
+                <!-- ================== Panel 1 ==================== -->
+                <div id="page-content">
+                    <div class="panel">
+					    <div class="panel-body">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <span style="float:right;"><button id="dateRange" class="btn btn-default dropdown-toggle" value="02/01/2022 - 02/10/2022" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <span class="label label-info">Custom</span>
+                                        <span id="setTGL">20 Feb 2022 - 08 Mar 2022</span> 
+                                        <i class="fa fa-chevron-down"></i></button>
+                                    </span>
+                                </div>
+                            </div>
+                            <h5 id="cmpgn-name">Campaign Name : -</h5>
+                            <div class="row mar-top">
+                                <div class="col-md-3">
+                                    <div class="panel panel-warning panel-colorful media middle pad-all">
+                                        <div class="media-left">
+                                            <div class="pad-hor">
+                                                <i class="demo-pli-file-word icon-3x"></i>
+                                            </div>
+                                        </div>
+                                        <div class="media-body">
+                                            <p  id="agg-impre" class="text-2x mar-no text-semibold">-</p>
+                                            <p class="mar-no">Impressions</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="panel panel-info panel-colorful media middle pad-all">
+                                        <div class="media-left">
+                                            <div class="pad-hor">
+                                                <i class="demo-pli-file-zip icon-3x"></i>
+                                            </div>
+                                        </div>
+                                        <div class="media-body">
+                                            <p id="agg-reach" class="text-2x mar-no text-semibold">-</p>
+                                            <p class="mar-no">Reach</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="panel panel-mint panel-colorful media middle pad-all">
+                                        <div class="media-left">
+                                            <div class="pad-hor">
+                                                <i class="demo-pli-camera-2 icon-3x"></i>
+                                            </div>
+                                        </div>
+                                        <div class="media-body">
+                                            <p id="agg-click" class="text-2x mar-no text-semibold">-</p>
+                                            <p class="mar-no">Click</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="panel panel-danger panel-colorful media middle pad-all">
+                                        <div class="media-left">
+                                            <div class="pad-hor">
+                                                <i class="demo-pli-video icon-3x"></i>
+                                            </div>
+                                        </div>
+                                        <div class="media-body">
+                                            <p id="agg-cpc" class="text-2x mar-no text-semibold">-</p>
+                                            <p class="mar-no">Cost Per Click</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h5 class="text-uppercase text-muted text-normal">Ads Breakdowns by Title Asset</h5>
+                            <hr class="new-section-xs" style="margin-bottom:0px">
+                            <div id="break-title-container">
+                                <table id="break-title" class="table toggle-circle" style="margin-bottom: 35px;">
+                                    <thead>
+                                        <tr>
+                                            <th data-toggle="true">Title</th>
+                                            <th>Impressions</th>
+                                            <th>Clicks</th>
+                                            <th data-hide="all">Reach</th>
+                                            <th data-hide="all">CPC</th>
+                                            <th data-hide="all">CTR</th>
+                                            <th data-hide="all">Spend</th>
+                                            <th data-hide="all">Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    
+                                    </tbody>
+                                </table>
+                            </div>
+                            <h5 class="text-uppercase text-muted text-normal pad-top">Ads Breakdowns by Body Asset</h5>
+                            <hr class="new-section-xs" style="margin-bottom:0px">
+                            <div id="break-body-container">
+                                <table id="break-body" class="table toggle-circle">
+                                    <thead>
+                                        <tr>
+                                            <th data-toggle="true">Body</th>
+                                            <th>Impressions</th>
+                                            <th>Clicks</th>
+                                            <th data-hide="all">Reach</th>
+                                            <th data-hide="all">CPC</th>
+                                            <th data-hide="all">CTR</th>
+                                            <th data-hide="all">Spend</th>
+                                            <th data-hide="all">Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+					</div>
+
+                    
+            </div>
+            <!--===================================================-->
+            <!--END CONTENT CONTAINER-->
+                        
+            {% include "main-nav.html" %} 
+
+            <!--Default Bootstrap Modal-->
+            <!--===================================================-->
+            <div class="modal fade" id="demo-tips" role="dialog" tabindex="-1" aria-labelledby="demo-default-modal" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+
+                        <!--Modal header-->
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal"><i class="pci-cross pci-circle"></i></button>
+                            <h4 class="modal-title">Manage Data Tips</h4>
+                        </div>
+
+                        <!--Modal body-->
+                        <div class="modal-body">
+                            <ul>
+                                <li>Hal pertama yang harus anda lakukan adalah selalu meng-update data, baik itu data ads ataupun campaign. Hal ini dilakukan agar tabel penyimpanan anda tidak kosong(saat pertama kali bergabung) dan juga menghindari terjadinya kesalahan pada saat pengolahan data.</li>
+                                <li>Saat melakukan update data, isikan parameter tanggal dengan tanggal kemarin. hal ini dilakukan agar semua data ads pada hari itu dapat di kumpulkan.</li>
+                                <li>Untuk Menampilkan data table(display table) pastikan jika anda sudah mengupdate data ads atau campaign. Hal ini dilakukan agar data yang ditampilkan pada table akan kosong.</li>
+                            </ul>
+                        </div>
+
+                        <!--Modal footer-->
+                        <div class="modal-footer">
+                            <button data-dismiss="modal" class="btn btn-primary" type="button">GOT IT</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--===================================================-->
+            <!--End Default Bootstrap Modal-->
+
+        </div>
+
+        <!-- FOOTER -->
+        <!--===================================================-->
+        <footer id="footer">
+
+            <!-- Visible when footer positions are fixed -->
+            <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+            <div class="show-fixed pad-rgt pull-right">
+                You have <a href="#" class="text-main"><span class="badge badge-danger">3</span> pending action.</a>
+            </div>
+
+            <!-- Visible when footer positions are static -->
+            <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+            <div class="hide-fixed pull-right pad-rgt">
+                14GB of <strong>512GB</strong> Free.
+            </div>
+
+            <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+            <!-- Remove the class "show-fixed" and "hide-fixed" to make the content always appears. -->
+            <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+            <p class="pad-lft">&#0169; 2021 Aptana Citra Solusindo</p>
+        </footer>
+        <!--===================================================-->
+        <!-- END FOOTER -->
+
+        <!-- SCROLL PAGE BUTTON -->
+        <!--===================================================-->
+        <button class="scroll-top btn">
+            <i class="pci-chevron chevron-up"></i>
+        </button>
+        <!--===================================================-->
+    </div>
+    <!--===================================================-->
+    <!-- END OF CONTAINER -->
+
+    <!--JAVASCRIPT-->
+    <!--=================================================-->
+ 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="../static/nifass/js/bootstrap.min.js"></script>
+    <script src="../static/nifass/js/nifty.min.js"></script>
+    <script src="../static/nifass/plugins/select2/js/select2.min.js"></script>
+    <script src="../static/nifass/js/demo/nifty-demo.min.js"></script>
+    <script src="../static/nifass/js/demo/nifty-demo.min.js"></script>
+    <!-- <script src="static/nifass/plugins/masked-input/jquery.maskedinput.min.js"></script>
+    <script src="static/nifass/js/demo/ui-modals.js"></script> -->
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script> 
+    <script src="../static/nifass/plugins/fooTable/dist/footable.all.min.js"></script>
+    <script src="../static/nifass/js/fb/ads-insights-detail.js"></script>
+    <!-- <script src="../static/nifass/plugins/datatables/media/js/jquery.dataTables.js"></script> -->
+	<!-- <script src="../static/nifass/plugins/datatables/media/js/dataTables.bootstrap.js"></script> -->
+	<!-- <script src="../static/nifass/plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js"></script> -->
+    <!-- <script src="../static/nifass/js/fb/campaign-insights.js"></script> -->
+
+</html>
