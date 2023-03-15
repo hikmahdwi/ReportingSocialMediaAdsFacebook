@@ -1,0 +1,9 @@
+Flask==2.0.3
+requests==2.27.1
+ptvsd==4.3.2 # Required for debugging.
+pandas==1.4.1
+SQLAlchemy==1.4.32
+Flask-SQLAlchemy==2.5.1
+Flask-Caching==1.11.1
+PyMySQL==1.0.2
+
